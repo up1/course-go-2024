@@ -2,6 +2,7 @@ package main
 
 import (
 	"api"
+	"api/auth"
 	"context"
 	"errors"
 	"log"
@@ -76,5 +77,17 @@ func setupHandler() *gin.Engine {
 			"message": "healthy",
 		})
 	})
+
+	// This handler will match /api/login
+	router.POST("/api/login", auth.Login)
+
+	// This handler will match /api/protected
+	router.GET("/api/protected", auth.IsAuthorized(func(c *gin.Context) {
+
+		c.JSON(http.StatusOK, gin.H{
+			"message": "You are authorized",
+		})
+	}))
+
 	return router
 }
