@@ -1,6 +1,7 @@
 package main
 
 import (
+	"api"
 	"context"
 	"errors"
 	"log"
@@ -18,6 +19,9 @@ func main() {
 	// Working with structured logging
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
+
+	// Create Database connection
+	api.NewDatabaseConnection()
 
 	handler := setupHandler()
 

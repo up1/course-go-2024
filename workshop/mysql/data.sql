@@ -1,0 +1,10 @@
+INSERT INTO message (name) VALUES ('Message 1');
+INSERT INTO message (name) VALUES ('Message 2');
+INSERT INTO message (name) VALUES ('Message 3');
+INSERT INTO message (name) VALUES ('Message 4');
+INSERT INTO message (name) VALUES ('Message 5');
+INSERT INTO message (name) VALUES ('Message 6');
+INSERT INTO message (name) VALUES ('Message 7');
+INSERT INTO message (name) VALUES ('Message 8');
+INSERT INTO message (name) VALUES ('Message 9');
+INSERT INTO message (name) VALUES ('Message 10');

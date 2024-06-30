@@ -15,7 +15,7 @@ COPY . .
 
 # Build the binary.
 # -o myapp specifies the output name of the binary
-RUN CGO_ENABLED=0 GOOS=linux go build -v -o api
+RUN CGO_ENABLED=0 GOOS=linux go build -v -o api cmd/main.go
 
 FROM alpine:3.19
 # Copy the binary to the production image from the builder stage.
