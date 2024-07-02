@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "e7e0207a-1f1d-4da3-bb07-795b193cbb79",
+		"name": "go-testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/devops-workshop~2c49fea8-c4ca-402e-88d6-3e2b93528f1b/collection/1453931-e7e0207a-1f1d-4da3-bb07-795b193cbb79?action=share&source=collection_link&creator=1453931"
+	},
+	"item": [
+		{
+			"name": "https://1d94f581-d84b-4966-ae88-29b3db310de1.mock.pstmn.io/users/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"// Test to validate response schema",
+							"pm.test(\"Response schema is valid\", function () {",
+							"  var schema = {",
+							"    type: \"object\",",
+							"    properties: {",
+							"      id: { type: \"number\" },",
+							"      name: { type: \"string\" },",
+							"      created_date: { type: \"string\", format: \"date-time\" }",
+							"    },",
+							"    required: [\"id\", \"name\", \"created_date\"],",
+							"  };",
+							"",
+							"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - id, name, and created_date\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.id).to.exist;",
+							"    pm.expect(responseData.name).to.exist;",
+							"    pm.expect(responseData.created_date).to.exist;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Id is a non-negative integer\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Name is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://1d94f581-d84b-4966-ae88-29b3db310de1.mock.pstmn.io/users/1",
+					"protocol": "https",
+					"host": [
+						"1d94f581-d84b-4966-ae88-29b3db310de1",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
