@@ -1,0 +1,39 @@
+services:
+  service-a:
+    build:
+      context: ./service-a
+    ports:
+      - "8081:8080"
+    environment:
+      OTEL_RESOURCE_ATTRIBUTES: service.name=service-a,service.instance.id=localhost:8081
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
+      OTEL_METRIC_EXPORT_INTERVAL: "5000"  # so we don't have to wait 60s for metrics
+    depends_on:
+      collector:
+        condition: service_healthy
+    
+  service-b:
+    build:
+      context: ./service-b
+    ports:
+      - "8082:8080"
+    environment:
+      OTEL_RESOURCE_ATTRIBUTES: service.name=service-b,service.instance.id=localhost:8082
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
+      OTEL_METRIC_EXPORT_INTERVAL: "5000"  # so we don't have to wait 60s for metrics
+    depends_on:
+      collector:
+        condition: service_healthy
+
+  collector:
+    image: grafana/otel-lgtm:0.6.0
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "3000:3000"
+    healthcheck:
+      test: curl --silent --fail localhost:3000 || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
