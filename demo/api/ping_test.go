@@ -12,7 +12,7 @@ import (
 func TestSuccess_with_GET_ping(t *testing.T) {
 	// Set Gin to test mode
 	gin.SetMode(gin.TestMode)
-	router := initHanlder()
+	router := initHanlder("pong")
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/ping", nil)
 
