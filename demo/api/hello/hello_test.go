@@ -1,6 +1,7 @@
-package main
+package hello_test
 
 import (
+	"api/hello"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -8,6 +9,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
+
+func initHanlder(msg string) *gin.Engine {
+	r := gin.New()
+	// Add hello route
+	hello.Routes(r, msg)
+	return r
+}
 
 func TestSuccess_with_GET_ping(t *testing.T) {
 	// Set Gin to test mode
