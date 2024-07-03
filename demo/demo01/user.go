@@ -1,8 +1,14 @@
 package hello
 
+import "fmt"
+
 type User struct {
 	Id   string
 	Name string
+}
+
+func (u User) String() string {
+	return fmt.Sprintf("Id=%s, Name=%s", u.Id, u.Name)
 }
 
 // Composition

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -22,10 +23,19 @@ func (r resource) xxx(c *gin.Context) {
 	})
 }
 
-func initHanlder(msg string) *gin.Engine {
+func initHanlder(msg any) *gin.Engine {
+	switch v := msg.(type) {
+	case string:
+		fmt.Println("msg is string:", v)
+	case int:
+		fmt.Println("msg is int:", v)
+	default:
+		fmt.Println("Unknown type")
+	}
+
 	r := gin.New()
 	r.Use(gin.Recovery())
-	resource := resource{msg: msg}
+	resource := resource{msg: msg.(string)}
 	r.GET("/ping", resource.xxx)
 	return r
 }

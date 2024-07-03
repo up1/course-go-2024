@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e7e0207a-1f1d-4da3-bb07-795b193cbb79",
+		"_postman_id": "35036113-689e-456c-ba59-6470a7022b8a",
 		"name": "go-testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1453931",
-		"_collection_link": "https://red-firefly-245852.postman.co/workspace/devops-workshop~2c49fea8-c4ca-402e-88d6-3e2b93528f1b/collection/1453931-e7e0207a-1f1d-4da3-bb07-795b193cbb79?action=share&source=collection_link&creator=1453931"
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/devops-workshop~2c49fea8-c4ca-402e-88d6-3e2b93528f1b/collection/1453931-35036113-689e-456c-ba59-6470a7022b8a?action=share&source=collection_link&creator=1453931"
 	},
 	"item": [
 		{
@@ -75,13 +75,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://1d94f581-d84b-4966-ae88-29b3db310de1.mock.pstmn.io/users/1",
-					"protocol": "https",
+					"raw": "{{MY_URL}}/users/1",
 					"host": [
-						"1d94f581-d84b-4966-ae88-29b3db310de1",
-						"mock",
-						"pstmn",
-						"io"
+						"{{MY_URL}}"
 					],
 					"path": [
 						"users",
