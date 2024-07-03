@@ -1,0 +1,8 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: myapi:2.0
+    ports:
+      - "8081:8080"
