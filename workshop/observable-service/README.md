@@ -9,10 +9,15 @@ NAME                             IMAGE                     COMMAND              
 observable-service-collector-1   grafana/otel-lgtm:0.6.0   "/bin/sh -c ./run-al…"   collector   2 minutes ago   Up 2 minutes (healthy)   0.0.0.0:3000->3000/tcp, 0.0.0.0:4317-4318->4317-4318/tcp
 ```
 
-Access to Grafana dashboard
+## Access to Grafana dashboard
 * http://localhost:3000
   * user=admin
   * password=admin
+
+* Datasource
+  * Loki => Logging
+  * Tempo => Tracing
+  * Prometheus => Metric
 
 
 ## 2. Start service a
