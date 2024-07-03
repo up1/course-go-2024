@@ -1,6 +1,7 @@
 package main
 
 import (
+	"api"
 	"api/hello"
 	"api/user"
 
@@ -22,7 +23,10 @@ func initHanlder(msg string) *gin.Engine {
 
 	// Add routes
 	hello.Routes(r, msg)
-	user.Routes(r)
+
+	client := api.CreateConnection()
+	env := user.Env{Client: client}
+	env.Routes(r)
 
 	return r
 }

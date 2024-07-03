@@ -1,8 +1,17 @@
 package user
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
-func Routes(r *gin.Engine) {
-	userApi := userApi{}
+type Env struct {
+	Client *mongo.Client
+}
+
+func (e Env) Routes(r *gin.Engine) {
+	userApi := userApi{
+		repo: &MyRepo{client: e.Client},
+	}
 	r.GET("/users/:id", userApi.getUserById)
 }
