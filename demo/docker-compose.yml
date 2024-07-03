@@ -6,3 +6,8 @@ services:
     image: myapi:2.0
     ports:
       - "8081:8080"
+  
+  db:
+    image: mongo:7.0.12-jammy
+    ports:
+      - "27017:27017"
