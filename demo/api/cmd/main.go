@@ -2,6 +2,7 @@ package main
 
 import (
 	"api/hello"
+	"api/user"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,8 +20,9 @@ func initHanlder(msg string) *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Recovery())
 
-	// Add hello route
+	// Add routes
 	hello.Routes(r, msg)
+	user.Routes(r)
 
 	return r
 }
